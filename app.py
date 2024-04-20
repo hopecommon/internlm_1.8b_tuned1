@@ -3,17 +3,16 @@ import os
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, AutoModel
 
-# download internlm2 to the base_path directory using git tool
-base_path = "./internlm_1.8b"
-os.system(
-    f"git clone https://github.com/hopecommon/internlm_1.8b_tuned1.git {base_path}"
-)
+base_path = "./try"
+os.system("apt install git")
+os.system("apt install git-lfs")
+os.system(f"git clone https://code.openxlab.org.cn/hopecommon/try.git {base_path}")
 os.system(f"cd {base_path} && git lfs pull")
-
-tokenizer = AutoTokenizer.from_pretrained(base_path, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(base_path, trust_remote_code=True) 
 model = AutoModelForCausalLM.from_pretrained(
     base_path, trust_remote_code=True, torch_dtype=torch.float16
 ).cuda()
+
 
 
 def chat(message, history):
