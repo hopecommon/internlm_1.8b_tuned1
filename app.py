@@ -19,7 +19,7 @@ Using `python path/to/web_demo.py` may cause unknown problems.
 import copy
 import warnings
 from dataclasses import asdict, dataclass
-from typing import Callable, List, Optional 
+from typing import Callable, List, Optional
 
 import streamlit as st
 import torch
@@ -73,7 +73,7 @@ def generate_interactive(
     if isinstance(eos_token_id, int):
         eos_token_id = [eos_token_id]
     if additional_eos_token_id is not None:
-        eos_token_id.append(additional_eos_token_id) 
+        eos_token_id.append(additional_eos_token_id)
     has_default_max_length = kwargs.get(
         'max_length') is None and generation_config.max_length is not None
     if has_default_max_length and generation_config.max_new_tokens is None:
@@ -181,11 +181,11 @@ def on_btn_click():
 
 @st.cache_resource
 def load_model():
-    model = (AutoModelForCausalLM.from_pretrained('/home/xlab-app-center/personal_assistant/final_model', 
+    model = (AutoModelForCausalLM.from_pretrained('/home/xlab-app-center/personal_assistant/final_model',
                                                   trust_remote_code=True).to(
                                                       torch.bfloat16).cuda())
     tokenizer = AutoTokenizer.from_pretrained('/home/xlab-app-center/personal_assistant/final_model',
-                                              trust_remote_code=True) 
+                                              trust_remote_code=True)
     return model, tokenizer
 
 
@@ -218,7 +218,7 @@ def combine_history(prompt):
     total_prompt = f"<s><|im_start|>system\n{meta_instruction}<|im_end|>\n"
     for message in messages:
         cur_content = message['content']
-        if message['role'] == 'user': 
+        if message['role'] == 'user':
             cur_prompt = user_prompt.format(user=cur_content)
         elif message['role'] == 'robot':
             cur_prompt = robot_prompt.format(robot=cur_content)
@@ -283,7 +283,7 @@ def main():
 # 拉取模型
 import os
 # download internlm2 to the base_path directory using git tool  
-os.system(f'git clone https://code.openxlab.org.cn/hopecommon/personal_assistant.git') 
+os.system(f'git clone https://code.openxlab.org.cn/hopecommon/personal_assistant.git')
 os.system(f'cd personal_assistant && git lfs pull')
 os.system('pwd')
 os.system('ls -h ./personal_assistant')
