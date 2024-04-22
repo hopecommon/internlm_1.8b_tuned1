@@ -1,6 +1,5 @@
-gradio==4.10.0
-transformers
 sentencepiece
+streamlit
+transformers>=4.34
 einops
-accelerate
-tiktoken
+gradio==4.13.0
