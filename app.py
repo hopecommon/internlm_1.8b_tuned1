@@ -8,7 +8,7 @@ base_path = './try'
 os.system('apt install git')
 os.system('apt install git-lfs')
 os.system(f'git clone https://code.openxlab.org.cn/hopecommon/try.git {base_path}')
-os.system(f'cd {base_path} && git lfs pull') 
+os.system(f'cd {base_path} && git lfs pull')
 tokenizer = AutoTokenizer.from_pretrained(base_path,trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(base_path,trust_remote_code=True, torch_dtype=torch.float16).cuda()
 
@@ -17,7 +17,7 @@ def chat(message,history):
         yield response
 
 gr.ChatInterface(chat,
-                 title="InternLM2-Chat-1.8B", 
+                 title="InternLM2-Chat-1.8B",
                 description="""
 InternLM is mainly developed by Shanghai AI Laboratory.  
                  """,
