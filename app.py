@@ -7,7 +7,7 @@ from openxlab.model import download
 base_path = './try'
 os.system('apt install git')
 os.system('apt install git-lfs')
-os.system(f'git clone https://code.openxlab.org.cn/hopecommon/try.git {base_path}') 
+os.system(f'git clone https://code.openxlab.org.cn/hopecommon/try.git {base_path}')
 os.system(f'cd {base_path} && git lfs pull') 
 tokenizer = AutoTokenizer.from_pretrained(base_path,trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(base_path,trust_remote_code=True, torch_dtype=torch.float16).cuda()
