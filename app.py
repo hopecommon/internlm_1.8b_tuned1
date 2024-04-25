@@ -30,7 +30,7 @@ from transformers.generation.utils import (LogitsProcessorList,
 StoppingCriteriaList)
 from transformers.utils import logging
 
-from transformers import AutoTokenizer, AutoModelForCausalLM  # isort: skip 
+from transformers import AutoTokenizer, AutoModelForCausalLM  # isort: skip
 
 logger = logging.get_logger(__name__)
 
@@ -232,8 +232,6 @@ def combine_history(prompt):
 
 
 def main():
-    if 'messages' not in st.session_state:
-        st.session_state.messages = []
     # torch.cuda.empty_cache()
     print('load model begin.')
     model, tokenizer = load_model()
@@ -246,7 +244,7 @@ def main():
 
     # Initialize chat history
     if 'messages' not in st.session_state:
-        st.session_state['messages'] = []
+        st.session_state.messages = []
 
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
@@ -286,7 +284,7 @@ def main():
 
 # 拉取模型
 import os
-# download internlm2 to the base_path directory using git tool  
+# download internlm2 to the base_path directory using git tool
 os.system(f'git clone https://code.openxlab.org.cn/hopecommon/personal_assistant.git')
 os.system(f'cd personal_assistant && git lfs pull')
 os.system('pwd')
