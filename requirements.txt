@@ -1,2 +1,5 @@
-lmdeploy[all]==0.3.0
-gradio==3.50.2
+lmdeploy[all]==0.3.0 
+gradio==3.50.2 
+sentencepiece
+transformers>=4.34 
+einops
