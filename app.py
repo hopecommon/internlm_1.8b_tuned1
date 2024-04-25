@@ -24,8 +24,6 @@ from dataclasses import asdict, dataclass
 from typing import Callable, List, Optional
 
 import streamlit as st
-if 'messages' not in st.session_state:
-    st.session_state.messages = []
 import torch
 from torch import nn
 from transformers.generation.utils import (LogitsProcessorList,
@@ -234,6 +232,8 @@ def combine_history(prompt):
 
 
 def main():
+    if 'messages' not in st.session_state:
+        st.session_state.messages = []
     # torch.cuda.empty_cache()
     print('load model begin.')
     model, tokenizer = load_model()
