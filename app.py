@@ -17,14 +17,14 @@ Using `python path/to/web_demo.py` may cause unknown problems.
 """
 # isort: skip_file
 import subprocess
-subprocess.run(["pip", "install", "sentencepiece"]) 
+subprocess.run(["pip", "install", "sentencepiece"])
 import copy
 import warnings
 from dataclasses import asdict, dataclass
 from typing import Callable, List, Optional
 
-import streamlit as st 
-if 'messages' not in st.session_state: 
+import streamlit as st
+if 'messages' not in st.session_state:
     st.session_state.messages = []
 import torch
 from torch import nn
